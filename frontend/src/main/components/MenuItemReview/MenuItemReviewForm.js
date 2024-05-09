@@ -34,7 +34,7 @@ function MenuItemReviewForm({ initialContents, submitAction, buttonLabel = "Crea
                         <Form.Control
                             data-testid={testIdPrefix + "-id"}
                             id="id"
-                            type="text"
+                            type="number"
                             {...register("id")}
                             value={initialContents.id}
                             disabled
@@ -49,14 +49,14 @@ function MenuItemReviewForm({ initialContents, submitAction, buttonLabel = "Crea
                     <Form.Control
                         data-testid={testIdPrefix + "-itemId"}
                         id="itemId"
-                        type="text"
+                        type="number"
                         isInvalid={Boolean(errors.itemId)}
                         {...register("itemId", {
-                            required: "A valid menu item ID is required."
+                            required: "Menu item ID field can't be blank."
                         })}
                     />
                     <Form.Control.Feedback type="invalid">
-                        {errors.itemId?.message}
+                        {errors.itemId?.message && "A valid menu item ID is required."}
                     </Form.Control.Feedback>
                 </Form.Group>
 
@@ -67,10 +67,14 @@ function MenuItemReviewForm({ initialContents, submitAction, buttonLabel = "Crea
                         id="dateReviewed"
                         type="datetime-local"
                         isInvalid={Boolean(errors.localDateTime)}
-                        {...register("dateReviewed", { required: true, pattern: isodate_regex })}
+                        {...register("dateReviewed", {
+                            required: "This field can't be blank.",
+                            pattern: isodate_regex
+                        })}
                     />
                     <Form.Control.Feedback type="invalid">
-                        {errors.dateReviewed && 'A valid date is required. '}
+                        {errors.dateReviewed && 'A valid date in iso format is required. See more here: https://en.wikipedia.org/wiki/ISO_8601'}
+                        {errors.dateReviewed?.message}
                     </Form.Control.Feedback>
                 </Form.Group>
             </Col>
@@ -85,10 +89,6 @@ function MenuItemReviewForm({ initialContents, submitAction, buttonLabel = "Crea
                         isInvalid={Boolean(errors.reviewerEmail)}
                         {...register("reviewerEmail", {
                             required: "Your email is required",
-                            maxLength : {
-                                value: 255,
-                                message: "Max length 255 characters"
-                            }
                         })}
                     />
                     <Form.Control.Feedback type="invalid">
@@ -104,9 +104,15 @@ function MenuItemReviewForm({ initialContents, submitAction, buttonLabel = "Crea
                         type="number"
                         isInvalid={Boolean(errors.stars)}
                         {...register("stars", {
-                            required: "A valid stars is required.",
-                            min: {value: 1, message: "Minimum 1 star"},
-                            max: {value: 5, message: "Maximum 5 stars"}
+                            required: "A valid number is required.",
+                            min: {
+                                value: 1,
+                                message: "Minimum 1 star"
+                            },
+                            max: {
+                                value: 5,
+                                message: "Maximum 5 stars"
+                            }
                         })}
                     />
                     <Form.Control.Feedback type="invalid">
@@ -123,15 +129,11 @@ function MenuItemReviewForm({ initialContents, submitAction, buttonLabel = "Crea
                     type="text"
                     isInvalid={Boolean(errors.name)}
                     {...register("comment", {
-                        required: "A valid comment is required.",
-                        maxLength : {
-                            value: 255,
-                            message: "Max length 255 characters"
-                        }
+                        required: "A comment is required.",
                     })}
                 />
                 <Form.Control.Feedback type="invalid">
-                    {errors.name?.message}
+                    {errors.comment?.message}
                 </Form.Control.Feedback>
             </Form.Group>
 
