@@ -6,13 +6,6 @@ const articlesFixtures = {
         "explanation": "testtesttest",
         "email": "test1@ucsb.edu",
         "dateAdded": "2022-01-02T12:00:00"
- /*private long id;
-
-  private String title;
-  private String url;  
-  private String explanation;
-  private String email;
-  private LocalDateTime dateAdded;*/
     },
     threeArticles: [
         {
