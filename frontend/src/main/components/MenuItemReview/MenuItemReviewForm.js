@@ -116,7 +116,7 @@ function MenuItemReviewForm({ initialContents, submitAction, buttonLabel = "Crea
             </Col>
 
             <Form.Group className="mb-3" >
-                <Form.Label htmlFor="comment">Name</Form.Label>
+                <Form.Label htmlFor="comment">Comment</Form.Label>
                 <Form.Control
                     data-testid={testIdPrefix + "-comment"}
                     id="comment"
