@@ -1,4 +1,4 @@
-# team03-s24-4pm-4
+# team03-s24-4pm-3
 
 Instructions: <https://ucsb-cs156.github.io/s24/lab/team03.html>
 
