@@ -2,7 +2,6 @@ import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import MenuItemReviewForm from "main/components/MenuItemReview/MenuItemReviewForm";
 import { menuItemReviewFixtures } from "fixtures/menuItemReviewFixtures";
 import { BrowserRouter as Router } from "react-router-dom";
-import UCSBDateForm from "../../../main/components/UCSBDates/UCSBDateForm";
 
 const mockedNavigate = jest.fn();
 
