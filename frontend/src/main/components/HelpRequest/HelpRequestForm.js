@@ -69,8 +69,37 @@ function HelpRequestForm({ initialContents, submitAction, buttonLabel = "Create"
                     </Form.Group>
                 </Col>
 
-                
+                <Col>
+                    <Form.Group className="mb-3" >
+                        <Form.Label htmlFor="teamId">Team Id</Form.Label>
+                        <Form.Control
+                            data-testid={testIdPrefix + "-teamId"}
+                            id="teamId"
+                            type="text"
+                            isInvalid={Boolean(errors.teamId)}
+                            {...register("teamId", { required: true })}
+                        />
+                        <Form.Control.Feedback type="invalid">
+                            {errors.teamId && 'Team Id is required. '}
+                        </Form.Control.Feedback>
+                    </Form.Group>
+                </Col>
 
+                <Col>
+                    <Form.Group className="mb-3" >
+                        <Form.Label htmlFor="tableOrBreakoutRoom">Table or Breakout Room</Form.Label>
+                        <Form.Control
+                            data-testid={testIdPrefix + "-tableOrBreakoutRoom"}
+                            id="tableOrBreakoutRoom"
+                            type="text"
+                            isInvalid={Boolean(errors.tableOrBreakoutRoom)}
+                            {...register("tableOrBreakoutRoom", { required: true })}
+                        />
+                        <Form.Control.Feedback type="invalid">
+                            {errors.tableOrBreakoutRoom && 'Team Id is required. '}
+                        </Form.Control.Feedback>
+                    </Form.Group>
+                </Col>
 
                 <Col>
                     <Form.Group className="mb-3" >
@@ -85,6 +114,38 @@ function HelpRequestForm({ initialContents, submitAction, buttonLabel = "Create"
                         <Form.Control.Feedback type="invalid">
                             {errors.requestTime && 'Request time is required. '}
                             {errors.requestTime?.type === 'pattern' && 'Request time must be in ISO format. '}
+                        </Form.Control.Feedback>
+                    </Form.Group>
+                </Col>
+
+                <Col>
+                    <Form.Group className="mb-3" >
+                        <Form.Label htmlFor="explanation">Explanation</Form.Label>
+                        <Form.Control
+                            data-testid={testIdPrefix + "-explanation"}
+                            id="explanation"
+                            type="text"
+                            isInvalid={Boolean(errors.explanation)}
+                            {...register("explanation", { required: true })}
+                        />
+                        <Form.Control.Feedback type="invalid">
+                            {errors.explanation && 'Explanation is required. '}
+                        </Form.Control.Feedback>
+                    </Form.Group>
+                </Col>
+
+                <Col>
+                    <Form.Group className="mb-3" >
+                        <Form.Label htmlFor="teamId">Solved</Form.Label>
+                        <Form.Check
+                            data-testid={testIdPrefix + "-solved"}
+                            id="solved"
+                            type="checkbox"
+                            isInvalid={Boolean(errors.solved)}
+                            {...register("solved")}
+                        />
+                        <Form.Control.Feedback type="invalid">
+                            {errors.solved && 'Solved is required. '}
                         </Form.Control.Feedback>
                     </Form.Group>
                 </Col>
@@ -108,7 +169,6 @@ function HelpRequestForm({ initialContents, submitAction, buttonLabel = "Create"
                 </Col>
             </Row>
         </Form>
-
     )
 }
 
