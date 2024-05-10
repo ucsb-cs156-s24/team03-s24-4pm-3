@@ -25,7 +25,7 @@ function HelpRequestForm({ initialContents, submitAction, buttonLabel = "Create"
     // from https://emailregex.com/
 
     // Stryker disable next-line Regex
-    const email_regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const email_regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
     const testIdPrefix = "HelpRequestForm";
 
@@ -62,7 +62,7 @@ function HelpRequestForm({ initialContents, submitAction, buttonLabel = "Create"
                             {...register("requesterEmail", { required: true, pattern: email_regex })}
                         />
                         <Form.Control.Feedback type="invalid">
-                            {errors.requesterEmail && 'Email is required. '}
+                            {errors.requesterEmail && 'Requester email is required. '}
                             {errors.requesterEmail?.type === 'pattern' && 'Must be a valid email address. '}
                         </Form.Control.Feedback>
                     </Form.Group>
@@ -112,7 +112,6 @@ function HelpRequestForm({ initialContents, submitAction, buttonLabel = "Create"
                         />
                         <Form.Control.Feedback type="invalid">
                             {errors.requestTime && 'Request time is required. '}
-                            {errors.requestTime?.type === 'pattern' && 'Request time must be in ISO format. '}
                         </Form.Control.Feedback>
                     </Form.Group>
                 </Col>
@@ -143,9 +142,6 @@ function HelpRequestForm({ initialContents, submitAction, buttonLabel = "Create"
                             isInvalid={Boolean(errors.solved)}
                             {...register("solved")}
                         />
-                        <Form.Control.Feedback type="invalid">
-                            {errors.solved && 'Solved is required. '}
-                        </Form.Control.Feedback>
                     </Form.Group>
                 </Col>
             </Row>
