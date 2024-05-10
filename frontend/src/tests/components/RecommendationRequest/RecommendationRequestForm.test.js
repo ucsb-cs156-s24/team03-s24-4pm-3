@@ -14,9 +14,6 @@ jest.mock('react-router-dom', () => ({
 describe("RecommendationRequestForm tests", () => {
 
     test("renders correctly", async () => {
-        const expectedHeaders = ["id", "RequesterEmail", "ProfessorEmail", "Explanation", "DateRequested", "DateNeeded", "Done"];
-        const expectedFields = ["id", "requesterEmail", "professorEmail", "explanation", "dateRequested", "dateNeeded", "done"];
-        const testId = "RecommendationRequestTable";
         
         render(
             <Router  >
