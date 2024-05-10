@@ -48,7 +48,7 @@ describe("ArticleForm tests", () => {
         await screen.findByTestId("ArticleForm-dateAdded");
         const localDateTimeField = screen.getByTestId("ArticleForm-dateAdded");
         const submitButton = screen.getByTestId("ArticleForm-submit");
-        
+
         fireEvent.change(localDateTimeField, { target: { value: 'bad-input' } });
         fireEvent.click(submitButton);
 
@@ -103,7 +103,6 @@ describe("ArticleForm tests", () => {
 
         await waitFor(() => expect(mockSubmitAction).toHaveBeenCalled());
 
-        expect(screen.queryByText(/localDateTime must be in ISO format/)).not.toBeInTheDocument();
 
     });
 

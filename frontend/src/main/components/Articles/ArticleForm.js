@@ -87,17 +87,17 @@ function ArticleForm({ initialContents, submitAction, buttonLabel = "Create" }) 
                 </Col>
 
                 <Col>
-                    <Form.Group className="mb-3">
-                        <Form.Label htmlFor="dateAdded">Date Added (iso format)</Form.Label>
+                    <Form.Group className="mb-3" >
+                        <Form.Label htmlFor="dateAdded">Date Added(iso format)</Form.Label>
                         <Form.Control
                             data-testid="ArticleForm-dateAdded"
                             id="dateAdded"
                             type="datetime-local"
                             isInvalid={Boolean(errors.dateAdded)}
-                            {...register("dateAdded", { required: "Date Added is required.", pattern: { value: isodate_regex, message: "Date Added must be in ISO format" } })}
+                            {...register("dateAdded", { required: true, pattern: isodate_regex })}
                         />
                         <Form.Control.Feedback type="invalid">
-                            {errors.dateAdded?.message}
+                            {errors.dateAdded && 'Date Added is required. '}
                         </Form.Control.Feedback>
                     </Form.Group>
 
