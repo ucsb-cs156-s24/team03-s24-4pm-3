@@ -54,6 +54,7 @@ export default function HelpRequestTable({ helpRequests, currentUser }) {
         },
         {
             Header: 'Solved',
+            id: 'solved',
             accessor: s => s.solved ? "Yes" : "No"
         }
     ];
