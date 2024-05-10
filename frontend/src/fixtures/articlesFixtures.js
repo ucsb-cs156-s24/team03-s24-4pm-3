@@ -5,7 +5,7 @@ const articlesFixtures = {
         "url": "test1.com",
         "explanation": "testtesttest",
         "email": "test1@ucsb.edu",
-        "dateAdded": "2022-01-02T12:00:00"
+        "dateAdded": "2022-04-02T12:00:00"
     },
     threeArticles: [
         {

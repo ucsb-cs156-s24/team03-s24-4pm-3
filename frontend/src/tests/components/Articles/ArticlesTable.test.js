@@ -13,7 +13,7 @@ jest.mock('react-router-dom', () => ({
     useNavigate: () => mockedNavigate
 }));
 
-describe("UserTable tests", () => {
+describe("ArticlesTable tests", () => {
   const queryClient = new QueryClient();
 
   test("Has the expected column headers and content for ordinary user", () => {
@@ -29,8 +29,8 @@ describe("UserTable tests", () => {
 
     );
 
-    const expectedHeaders = ["id", "Title", "Url", "Email", "Explanation", "Date Added"];
-    const expectedFields = ["id", "title", "url", "email", "explanation", "dateAdded"];
+    const expectedHeaders = ["id", "Title", "Email", "URL", "Explanation", "Date Added"];
+    const expectedFields = ["id", "title", "email", "url", "explanation", "dateAdded"];
     const testId = "ArticlesTable";
 
     expectedHeaders.forEach((headerText) => {
@@ -45,6 +45,7 @@ describe("UserTable tests", () => {
 
     expect(screen.getByTestId(`${testId}-cell-row-0-col-id`)).toHaveTextContent("1");
     expect(screen.getByTestId(`${testId}-cell-row-1-col-id`)).toHaveTextContent("2");
+    expect(screen.getByTestId(`${testId}-cell-row-2-col-id`)).toHaveTextContent("3");
 
     const editButton = screen.queryByTestId(`${testId}-cell-row-0-col-Edit-button`);
     expect(editButton).not.toBeInTheDocument();
@@ -67,8 +68,8 @@ describe("UserTable tests", () => {
 
     );
 
-    const expectedHeaders = ["id", "Title", "Url", "Email", "Explanation", "Date Added"];
-    const expectedFields = ["id", "title", "url", "email", "explanation", "dateAdded"];
+    const expectedHeaders = ["id", "Title", "Email", "URL", "Explanation", "Date Added"];
+    const expectedFields = ["id", "title", "email", "url", "explanation", "dateAdded"];
     const testId = "ArticlesTable";
 
     expectedHeaders.forEach((headerText) => {
@@ -83,6 +84,7 @@ describe("UserTable tests", () => {
 
     expect(screen.getByTestId(`${testId}-cell-row-0-col-id`)).toHaveTextContent("1");
     expect(screen.getByTestId(`${testId}-cell-row-1-col-id`)).toHaveTextContent("2");
+    expect(screen.getByTestId(`${testId}-cell-row-2-col-id`)).toHaveTextContent("3");
 
     const editButton = screen.getByTestId(`${testId}-cell-row-0-col-Edit-button`);
     expect(editButton).toBeInTheDocument();
@@ -116,6 +118,29 @@ describe("UserTable tests", () => {
 
     await waitFor(() => expect(mockedNavigate).toHaveBeenCalledWith('/articles/edit/1'));
 
+});
+
+test("Delete button calls delete callback", async () => {
+    // arrange
+    const currentUser = currentUserFixtures.adminUser;
+
+    // act - render the component
+    render(
+      <QueryClientProvider client={queryClient}>
+        <MemoryRouter>
+          <ArticlesTable articles={articlesFixtures.threeArticles} currentUser={currentUser} />
+        </MemoryRouter>
+      </QueryClientProvider>
+    );
+
+    // assert - check that the expected content is rendered
+    expect(await screen.findByTestId(`ArticlesTable-cell-row-0-col-id`)).toHaveTextContent("1");
+
+    const deleteButton = screen.getByTestId(`ArticlesTable-cell-row-0-col-Delete-button`);
+    expect(deleteButton).toBeInTheDocument();
+
+    // act - click the delete button
+    fireEvent.click(deleteButton);
   });
 
 });
