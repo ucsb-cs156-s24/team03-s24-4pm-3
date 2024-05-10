@@ -35,7 +35,6 @@ function HelpRequestForm({ initialContents, submitAction, buttonLabel = "Create"
 
 
             <Row>
-
                 {initialContents && (
                     <Col>
                         <Form.Group className="mb-3" >
@@ -96,7 +95,7 @@ function HelpRequestForm({ initialContents, submitAction, buttonLabel = "Create"
                             {...register("tableOrBreakoutRoom", { required: true })}
                         />
                         <Form.Control.Feedback type="invalid">
-                            {errors.tableOrBreakoutRoom && 'Team Id is required. '}
+                            {errors.tableOrBreakoutRoom && 'Table or breakout room is required. '}
                         </Form.Control.Feedback>
                     </Form.Group>
                 </Col>
@@ -155,14 +154,14 @@ function HelpRequestForm({ initialContents, submitAction, buttonLabel = "Create"
                 <Col>
                     <Button
                         type="submit"
-                        data-testid="UCSBDateForm-submit"
+                        data-testid="HelpRequestForm-submit"
                     >
                         {buttonLabel}
                     </Button>
                     <Button
                         variant="Secondary"
                         onClick={() => navigate(-1)}
-                        data-testid="UCSBDateForm-cancel"
+                        data-testid="HelpRequestForm-cancel"
                     >
                         Cancel
                     </Button>
