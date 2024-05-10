@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for components/Restaurants/RestaurantTable.js</title>
+    <title>Code coverage report for components/MenuItemReview/MenuItemReviewTable.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,7 +19,7 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">components/Restaurants</a> RestaurantTable.js</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">components/MenuItemReview</a> MenuItemReviewTable.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
@@ -122,7 +122,16 @@
 <a name='L57'></a><a href='#L57'>57</a>
 <a name='L58'></a><a href='#L58'>58</a>
 <a name='L59'></a><a href='#L59'>59</a>
-<a name='L60'></a><a href='#L60'>60</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -135,26 +144,24 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">19x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">19x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -169,14 +176,25 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">19x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">19x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -189,27 +207,26 @@ import { cellToAxiosParamsDelete, onDeleteSuccess } from "main/utils/restaurantU
 import { useNavigate } from "react-router-dom";
 import { hasRole } from "main/utils/currentUser";
 &nbsp;
-export default function RestaurantTable({
-    restaurants,
+export default function MenuItemReviewTable({
+    menuItemReviews,
     currentUser,
-    testIdPrefix = "RestaurantTable" }) {
+    testIdPrefix = "MenuItemReviewTable" }) {
 &nbsp;
     const navigate = useNavigate();
 &nbsp;
     const editCallback = (cell) =&gt; {
-        navigate(`/restaurants/edit/${cell.row.values.id}`)
+        navigate(`/menuitemreviews/edit/${cell.row.values.id}`)
     }
 &nbsp;
     // Stryker disable all : hard to test for query caching
-&nbsp;
     const deleteMutation = useBackendMutation(
         cellToAxiosParamsDelete,
         { onSuccess: onDeleteSuccess },
-        ["/api/restaurants/all"]
+        ["/api/menuitemreviews/all"]
     );
-    // Stryker restore all 
+    // Stryker restore all
 &nbsp;
-    // Stryker disable next-line all : TODO try to make a good test for this
+    // Stryker disable next-line all
     const deleteCallback = async (cell) =&gt; { deleteMutation.mutate(cell); }
 &nbsp;
     const columns = [
@@ -219,28 +236,38 @@ export default function RestaurantTable({
         },
 &nbsp;
         {
-            Header: 'Name',
-            accessor: 'name',
+            Header: 'Menu Item ID',
+            accessor: 'itemId',
         },
         {
-            Header: 'Description',
-            accessor: 'description',
+            Header: 'Reviewer Email',
+            accessor: 'reviewerEmail',
+        },
+        {
+            Header: 'Rating',
+            accessor: 'stars',
+        },
+        {
+            Header: 'Date Reviewed',
+            accessor: 'dateReviewed',
+        },
+        {
+            Header: 'Comment',
+            accessor: 'comment',
         }
     ];
 &nbsp;
     if (hasRole(currentUser, "ROLE_ADMIN")) {
         columns.push(ButtonColumn("Edit", "primary", editCallback, testIdPrefix));
         columns.push(ButtonColumn("Delete", "danger", deleteCallback, testIdPrefix));
-    } 
+    }
 &nbsp;
     return &lt;OurTable
-        data={restaurants}
+        data={menuItemReviews}
         columns={columns}
         testid={testIdPrefix}
     /&gt;;
-};
-&nbsp;
-&nbsp;</pre></td></tr></table></pre>
+}</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
