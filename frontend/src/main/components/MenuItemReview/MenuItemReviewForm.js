@@ -22,6 +22,9 @@ function MenuItemReviewForm({ initialContents, submitAction, buttonLabel = "Crea
     // Stryker disable next-line Regex
     const isodate_regex = /(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d)/i;
 
+    // Stryker disable next-line Regex
+    const int_regex = /^[0-9]+$/;
+
     const testIdPrefix = "MenuItemReviewForm";
 
     return(
@@ -52,11 +55,13 @@ function MenuItemReviewForm({ initialContents, submitAction, buttonLabel = "Crea
                         type="number"
                         isInvalid={Boolean(errors.itemId)}
                         {...register("itemId", {
-                            required: "Menu item ID field can't be blank."
+                            required: "Menu item ID field can't be blank.",
+                            pattern: int_regex
                         })}
                     />
                     <Form.Control.Feedback type="invalid">
-                        {errors.itemId?.message && "A valid menu item ID is required."}
+                        {errors.itemId && "A valid integer is required."}
+                        {errors.itemId?.message}
                     </Form.Control.Feedback>
                 </Form.Group>
 
@@ -112,10 +117,12 @@ function MenuItemReviewForm({ initialContents, submitAction, buttonLabel = "Crea
                             max: {
                                 value: 5,
                                 message: "Maximum 5 stars"
-                            }
+                            },
+                            pattern: int_regex
                         })}
                     />
                     <Form.Control.Feedback type="invalid">
+                        {errors.stars && 'A valid integer between 1 and 5 is required. '}
                         {errors.stars?.message}
                     </Form.Control.Feedback>
                 </Form.Group>

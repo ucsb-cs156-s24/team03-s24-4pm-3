@@ -57,13 +57,17 @@ describe('MenuItemReviewForm tests', () => {
         fireEvent.change(dateReviewedField, { target: { value: 'bad-input' } });
         fireEvent.click(submitButton);
 
-        await screen.findByText(/A valid menu item ID is required/);
+        await screen.findByText(/A valid integer is required/);
         expect(screen.getByText(/A valid date in iso format is required/)).toBeInTheDocument();
         expect(screen.getByText(/Maximum 5 stars/)).toBeInTheDocument();
 
         fireEvent.change(starsField, { target: { value: 0 } });
         fireEvent.click(submitButton);
         await screen.findByText(/Minimum 1 star/);
+
+        fireEvent.change(starsField, { target: { value: 3.5 } });
+        fireEvent.click(submitButton);
+        await screen.findByText(/A valid integer between 1 and 5 is required/);
     });
 
     test("Correct Error messsages on missing input", async () => {
@@ -77,7 +81,7 @@ describe('MenuItemReviewForm tests', () => {
 
         fireEvent.click(submitButton);
 
-        await screen.findByText(/A valid menu item ID is required/);
+        await screen.findByText(/A valid integer is required/);
         expect(screen.getByText(/A valid date in iso format is required/)).toBeInTheDocument();
         expect(screen.getByText(/A valid number is required/)).toBeInTheDocument();
         expect(screen.getByText(/Your email is required/)).toBeInTheDocument();
@@ -110,7 +114,7 @@ describe('MenuItemReviewForm tests', () => {
 
         await waitFor(() => expect(mockSubmitAction).toHaveBeenCalled());
 
-        expect(screen.queryByText(/A valid menu item ID is required/)).not.toBeInTheDocument();
+        expect(screen.queryByText(/A valid integer is required/)).not.toBeInTheDocument();
         expect(screen.queryByText(/A valid date in iso format is required/)).not.toBeInTheDocument();
         expect(screen.queryByText(/A valid number is required/)).not.toBeInTheDocument();
         expect(screen.queryByText(/Your email is required/)).not.toBeInTheDocument();
