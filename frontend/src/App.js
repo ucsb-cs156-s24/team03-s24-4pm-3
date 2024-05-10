@@ -31,6 +31,9 @@ import RecommendationRequestEditPage from "main/pages/RecommendationRequest/Reco
 import { hasRole, useCurrentUser } from "main/utils/currentUser";
 
 import "bootstrap/dist/css/bootstrap.css";
+import MenuItemReviewIndexPage from "./main/pages/MenuItemReview/MenuItemReviewIndexPage";
+import MenuItemReviewEditPage from "./main/pages/MenuItemReview/MenuItemReviewEditPage";
+import MenuItemReviewCreatePage from "./main/pages/MenuItemReview/MenuItemReviewCreatePage";
 
 function App() {
   const { data: currentUser } = useCurrentUser();
@@ -88,6 +91,21 @@ function App() {
             </>
           )
         }
+          {
+              hasRole(currentUser, "ROLE_USER") && (
+                  <>
+                      <Route exact path="/menuitemreview" element={<MenuItemReviewIndexPage />} />
+                  </>
+              )
+          }
+          {
+              hasRole(currentUser, "ROLE_ADMIN") && (
+                  <>
+                      <Route exact path="/menuitemreview/edit/:id" element={<MenuItemReviewEditPage />} />
+                      <Route exact path="/menuitemreview/create" element={<MenuItemReviewCreatePage />} />
+                  </>
+              )
+          }
         {
           hasRole(currentUser, "ROLE_USER") && (
             <>
