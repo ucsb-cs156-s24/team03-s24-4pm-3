@@ -93,15 +93,10 @@ public class UCSBOrganizationControllerTests extends ControllerTestCase {
                 when(UCSBOrganizationRepository.save(eq(KC))).thenReturn(KC);
 
                 // act
-MvcResult response = mockMvc.perform(
-    post("/api/ucsbdiningcommonsmenuitem/post")
-            .param("orgCode", "KC")
-            .param("orgTranslationShort", "KevinClubShort")
-            .param("orgTranslation", "KevinClub")
-            .param("inactive", "true")
-            .with(csrf()))
-    .andExpect(status().isOk())
-    .andReturn();
+                MvcResult response = mockMvc.perform(
+                                post("/api/UCSBOrganization/post?orgCode=KC&orgTranslationShort=KevinClubShort&orgTranslation=KevinClub&inactive=true")
+                                                .with(csrf()))
+                                .andExpect(status().isOk()).andReturn();
 
                 // assert
                 verify(UCSBOrganizationRepository, times(1)).save(KC);
