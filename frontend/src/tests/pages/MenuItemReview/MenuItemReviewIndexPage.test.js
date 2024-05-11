@@ -4,7 +4,6 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
 import mockConsole from "jest-mock-console";
 import { menuItemReviewFixtures } from "fixtures/menuItemReviewFixtures";
-
 import { apiCurrentUserFixtures } from "fixtures/currentUserFixtures";
 import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
 import axios from "axios";
@@ -43,9 +42,12 @@ describe("MenuItemReviewIndexPage tests", () => {
     const queryClient = new QueryClient();
 
     test("Renders with Create Button for admin user", async () => {
+
+        // arrange
         setupAdminUser();
         axiosMock.onGet("/api/menuitemreview/all").reply(200, []);
 
+        // act
         render(
             <QueryClientProvider client={queryClient}>
                 <MemoryRouter>
@@ -54,12 +56,26 @@ describe("MenuItemReviewIndexPage tests", () => {
             </QueryClientProvider>
         );
 
+        // assert
         await waitFor(() => {
             expect(screen.getByText(/Create Menu Item Review/)).toBeInTheDocument();
         });
         const button = screen.getByText(/Create Menu Item Review/);
         expect(button).toHaveAttribute('href', '/menuitemreview/create');
         expect(button).toHaveAttribute('style', 'float: right;')
+    });
+
+    test("does not render Create Button for non-admin user", async () => {
+        setupUserOnly();
+        render(
+            <QueryClientProvider client={queryClient}>
+                <MemoryRouter>
+                    <MenuItemReviewIndexPage />
+                </MemoryRouter>
+            </QueryClientProvider>
+        );
+
+        await waitFor(() => { expect(screen.queryByText(/Create Menu Item Review/)).not.toBeInTheDocument(); });
     });
 
     test("renders three menu item reviews", async () => {
@@ -170,7 +186,10 @@ describe("MenuItemReviewIndexPage tests", () => {
 
         fireEvent.click(deleteButton);
 
-        await waitFor(() => { expect(mockToast).toBeCalledWith("MenuItemReview with id 2 was deleted") });
+        await waitFor(() => { expect(axiosMock.history.delete.length).toBe(1); });
+        expect(axiosMock.history.delete[0].url).toBe("/api/menuitemreview");
+        expect(axiosMock.history.delete[0].url).toBe("/api/menuitemreview");
+        expect(axiosMock.history.delete[0].params).toEqual({ id: 2 });
     });
 
 });
