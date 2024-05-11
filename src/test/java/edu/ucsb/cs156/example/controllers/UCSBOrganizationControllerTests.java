@@ -71,7 +71,7 @@ public class UCSBOrganizationControllerTests extends ControllerTestCase {
                              .andExpect(status().is(403));
      }
 
-     @WithMockUser(roles = { "USER" })
+        @WithMockUser(roles = { "USER" })
         @Test
         public void logged_in_regular_users_cannot_post() throws Exception {
                 mockMvc.perform(post("/api/UCSBOrganization/post"))
@@ -93,10 +93,15 @@ public class UCSBOrganizationControllerTests extends ControllerTestCase {
                 when(UCSBOrganizationRepository.save(eq(KC))).thenReturn(KC);
 
                 // act
-                MvcResult response = mockMvc.perform(
-                                post("/?orgCode=KC&orgTranslationShort=KevinClubShort&orgTranslation=KevinClub&inactive=true")
-                                                .with(csrf()))
-                                .andExpect(status().isOk()).andReturn();
+MvcResult response = mockMvc.perform(
+    post("/api/ucsbdiningcommonsmenuitem/post")
+            .param("orgCode", "KC")
+            .param("orgTranslationShort", "KevinClubShort")
+            .param("orgTranslation", "KevinClub")
+            .param("inactive", "true")
+            .with(csrf()))
+    .andExpect(status().isOk())
+    .andReturn();
 
                 // assert
                 verify(UCSBOrganizationRepository, times(1)).save(KC);
