@@ -82,7 +82,7 @@ public class MenuItemReviewController extends ApiController{
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PutMapping("")
     public MenuItemReview updateMenuItemReview(
-            @Parameter(name="id", description="The id of the review you want to update") @RequestParam Long id,
+            @Parameter(name="id") @RequestParam Long id,
             @RequestBody @Valid MenuItemReview incoming) {
 
         MenuItemReview review = menuItemReviewRepository.findById(id)
@@ -95,7 +95,6 @@ public class MenuItemReviewController extends ApiController{
         review.setComment(incoming.getComment());
 
         menuItemReviewRepository.save(review);
-
         return review;
     }
 }
