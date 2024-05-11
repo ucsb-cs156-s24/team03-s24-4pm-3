@@ -2,12 +2,12 @@ import { fireEvent, render, waitFor, screen } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
 import MenuitemReviewEditPage from "main/pages/MenuItemReview/MenuItemReviewEditPage";
+
 import { apiCurrentUserFixtures } from "fixtures/currentUserFixtures";
 import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
 import axios from "axios";
 import AxiosMockAdapter from "axios-mock-adapter";
 import mockConsole from "jest-mock-console";
-import RestaurantEditPage from "../../../main/pages/Restaurants/RestaurantEditPage";
 
 const mockToast = jest.fn();
 jest.mock('react-toastify', () => {
@@ -78,16 +78,16 @@ describe("MenuItemReviewEditPage tests", () => {
                 itemId: 123,
                 reviewerEmail: "test1@gmail,com",
                 stars: 4,
-                dateReviewed: "2024-05-11T09:30:06",
-                review: "Great food",
+                dateReviewed: "2024-05-11T09:30:06.000",
+                comment: "Great food",
             });
             axiosMock.onPut('/api/menuitemreview').reply(200, {
                 id: "17",
                 itemId: "12",
                 reviewerEmail: "test2@gmail,com",
                 stars: "5",
-                dateReviewed: "2024-05-11T09:30:06",
-                review: "Really food",
+                dateReviewed: "2024-05-11T09:30:06.000",
+                comment: "Really food",
             });
         });
 
@@ -130,8 +130,7 @@ describe("MenuItemReviewEditPage tests", () => {
             fireEvent.click(submitButton);
 
             await waitFor(() => expect(mockToast).toBeCalled());
-            expect(mockToast).toBeCalledWith("MenuItemReview Updated - id: 17 itemId: 12 reviewerEmail: test2@gmail,com stars: 5 dateReviewed: 2024-05-11T09:30:06 review: Really food");
-
+            expect(mockToast).toBeCalledWith("Menu Item Review Updated - id: 17 - itemId: 12 - reviewerEmail: test2@gmail,com - stars: 5 - dateReviewed: 2024-05-11T09:30:06.000 - comment: Really food");
             expect(mockNavigate).toBeCalledWith({"to": "/menuitemreview"});
 
             expect(axiosMock.history.put.length).toBe(1); // times called
@@ -140,8 +139,8 @@ describe("MenuItemReviewEditPage tests", () => {
                 itemId: '12',
                 reviewerEmail: 'test2@gmail,com',
                 stars: '5',
-                dateReviewed: '2024-05-11T09:30:06',
-                review: 'Really food'
+                dateReviewed: '2024-05-11T09:30:06.000',
+                comment: 'Really food'
             })); // posted object
         });
 
@@ -170,7 +169,7 @@ describe("MenuItemReviewEditPage tests", () => {
             expect(reviewerEmailField).toHaveValue("test1@gmail,com");
             expect(starsField).toHaveValue(4);
             expect(dateReviewedField).toHaveValue("2024-05-11T09:30:06.000");
-            // expect(reviewField).toHaveValue("Great food");
+            expect(reviewField).toHaveValue("Great food");
 
             fireEvent.change(itemIdField, {target: {value: '12'}});
             fireEvent.change(reviewerEmailField, {target: {value: 'test2@gmail,com'}});
@@ -180,7 +179,7 @@ describe("MenuItemReviewEditPage tests", () => {
             fireEvent.click(submitButton);
 
             await waitFor(() => expect(mockToast).toBeCalled());
-            expect(mockToast).toBeCalledWith("MenuItemReview Updated - id: 17 itemId: 12 reviewerEmail: test2@gmail,com stars: 5 dateReviewed: 2024-05-11T09:30:06 review: Really food");
+            expect(mockToast).toBeCalledWith("Menu Item Review Updated - id: 17 - itemId: 12 - reviewerEmail: test2@gmail,com - stars: 5 - dateReviewed: 2024-05-11T09:30:06.000 - comment: Really food");
             expect(mockNavigate).toBeCalledWith({ "to": "/menuitemreview" });
         });
 

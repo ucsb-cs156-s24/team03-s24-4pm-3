@@ -22,7 +22,7 @@ export default function MenuItemReviewEditPage({storybook=false}){
         );
 
     const objectToAxiosPutParams = (menuItemReview) => ({
-        url: "/api/menuitemreview/",
+        url: "/api/menuitemreview",
         method: "PUT",
         params: {
             id: menuItemReview.id,
