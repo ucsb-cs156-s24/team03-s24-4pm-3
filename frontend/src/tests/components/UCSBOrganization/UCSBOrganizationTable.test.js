@@ -72,9 +72,13 @@ describe("UCSBOrganizationTable tests", () => {
 
     expect(screen.getByTestId(`${testId}-cell-row-0-col-orgCode`)).toHaveTextContent("HC");
     expect(screen.getByTestId(`${testId}-cell-row-0-col-orgTranslation`)).toHaveTextContent("Happy Club");
+    expect(screen.getByTestId(`${testId}-cell-row-0-col-orgTranslationShort`)).toHaveTextContent("Happy Club Short");
+    expect(screen.getByTestId(`${testId}-cell-row-0-col-Inactive`)).toHaveTextContent("false");
 
     expect(screen.getByTestId(`${testId}-cell-row-1-col-orgCode`)).toHaveTextContent("SC");
     expect(screen.getByTestId(`${testId}-cell-row-1-col-orgTranslation`)).toHaveTextContent("Sad Club");
+    expect(screen.getByTestId(`${testId}-cell-row-1-col-orgTranslationShort`)).toHaveTextContent("Sad Club Short");
+    expect(screen.getByTestId(`${testId}-cell-row-1-col-Inactive`)).toHaveTextContent("true");
 
     const editButton = screen.getByTestId(`${testId}-cell-row-0-col-Edit-button`);
     expect(editButton).toBeInTheDocument();
@@ -148,6 +152,9 @@ describe("UCSBOrganizationTable tests", () => {
     await waitFor(() => expect(mockedNavigate).toHaveBeenCalledWith('/UCSBOrganization/edit/HC'));
 
   });
+
+  
+  
 
   test("Delete button calls delete callback", async () => {
     // arrange
