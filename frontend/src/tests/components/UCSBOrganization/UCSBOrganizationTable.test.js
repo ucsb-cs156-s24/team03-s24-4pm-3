@@ -17,7 +17,7 @@ describe("UCSBOrganizationTable tests", () => {
   const queryClient = new QueryClient();
 
   const expectedHeaders = ["Organization Code", "Organization Translation", "Organization Translation Shortened", "Inactive"];
-  const expectedFields = ["orgCode", "orgTranslation", "orgTranslationShort", "inactive"];
+  const expectedFields = ["orgCode", "orgTranslation", "orgTranslationShort", "Inactive"];
   const testId = "UCSBOrganizationTable";
 
   test("renders empty table correctly", () => {
