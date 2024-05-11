@@ -3,8 +3,8 @@ name: 99 - Create Issues for team03
 env:
   GH_TOKEN: ${{ github.token }}
   ASN_LINK: https://ucsb-cs156.github.io/s24/lab/team03
-  FRONTEND_URL: "{ \"UCSBDiningCommonsMenuItem\": \"diningcommonsmenuitem\", \"UCSBOrganization\": \"UCSBOrganization\", \"RecommendationRequest\": \"recommendationrequest\", \"MenuItemReview\": \"menuitemreview\", \"HelpRequest\": \"helprequest\", \"Articles\": \"articles\" }"
-  FIXTURES: "{ \"UCSBDiningCommonsMenuItem\": \"ucsbDiningCommonsMenuItem\", \"UCSBOrganization\": \"UCSBOrganization\", \"RecommendationRequest\": \"recommendationRequest\", \"MenuItemReview\": \"menuItemReview\", \"HelpRequest\": \"helpRequest\", \"Articles\": \"articles\" }"
+  FRONTEND_URL: "{ \"UCSBDiningCommonsMenuItem\": \"diningcommonsmenuitem\", \"UCSBOrganization\": \"ucsborganization\", \"RecommendationRequest\": \"recommendationrequest\", \"MenuItemReview\": \"menuitemreview\", \"HelpRequest\": \"helprequest\", \"Articles\": \"articles\" }"
+  FIXTURES: "{ \"UCSBDiningCommonsMenuItem\": \"ucsbDiningCommonsMenuItem\", \"UCSBOrganization\": \"ucsbOrganization\", \"RecommendationRequest\": \"recommendationRequest\", \"MenuItemReview\": \"menuItemReview\", \"HelpRequest\": \"helpRequest\", \"Articles\": \"articles\" }"
   LABEL_COLOR: "{ \"UCSBDiningCommonsMenuItem\": \"ff0000\", \"UCSBOrganization\": \"00ff00\", \"RecommendationRequest\": \"0000ff\", \"MenuItemReview\": \"ff00ff\", \"HelpRequest\": \"ffff00\", \"Articles\": \"00ffff\" }"
   REPO_FILE: https://github.com/${{github.repository}}/blob/main
 on:
