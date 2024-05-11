@@ -7,8 +7,8 @@ import { toast } from "react-toastify";
 export default function MenuItemReviewCreatePage({storybook=false}) {
 
     const objectToAxiosParams = (menuItemReview) => ({
-        url: "/api/menuitemreviews/post",
-        method: "POST",
+        url: "/api/menuitemreview/post",
+        method: "post",
         params: {
             itemId: menuItemReview.itemId,
             reviewerEmail: menuItemReview.reviewerEmail,
@@ -26,7 +26,7 @@ export default function MenuItemReviewCreatePage({storybook=false}) {
         objectToAxiosParams,
         { onSuccess },
         // Stryker disable next-line all : hard to set up test for caching
-        ["/api/menuitemreviews/all"] // mutation makes this key stale so that pages relying on it reload
+        ["/api/menuitemreview/all"] // mutation makes this key stale so that pages relying on it reload
     );
 
     const { isSuccess } = mutation
@@ -36,7 +36,7 @@ export default function MenuItemReviewCreatePage({storybook=false}) {
     }
 
     if (isSuccess && !storybook) {
-        return <Navigate to="/menuitemreviews" />
+        return <Navigate to="/menuitemreview" />
     }
 
     return (

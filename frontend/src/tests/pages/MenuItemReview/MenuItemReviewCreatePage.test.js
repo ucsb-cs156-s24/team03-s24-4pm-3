@@ -61,7 +61,7 @@ describe("MenuItemReviewCreatePage tests", () => {
             comment: "Great food"
         };
 
-        axiosMock.onPost("/api/menuitemreviews/post").reply(200, menuItemReview);
+        axiosMock.onPost("/api/menuitemreview/post").reply(200, menuItemReview);
 
         render(
             <QueryClientProvider client={queryClient}>
@@ -110,6 +110,6 @@ describe("MenuItemReviewCreatePage tests", () => {
             comment: "Great food"
         });
         expect(mockToast).toBeCalledWith("New menuItemReview Created - id: 3 itemId: 1 reviewerEmail: test1@gmail.com stars: 5 dateReviewed: 2021-08-01T00:00 comment: Great food");
-        expect(mockNavigate).toBeCalledWith({ "to": "/menuitemreviews" });
+        expect(mockNavigate).toBeCalledWith({ "to": "/menuitemreview" });
     });
 });
