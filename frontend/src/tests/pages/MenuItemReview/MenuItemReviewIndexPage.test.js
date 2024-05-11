@@ -1,5 +1,5 @@
 import { render, screen, waitFor, fireEvent } from "@testing-library/react";
-import MenuItemReviewIndexPage from "main/pages/menuItemReview/MenuItemReviewIndexPage";
+import MenuItemReviewIndexPage from "main/pages/MenuItemReview/MenuItemReviewIndexPage";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
 import mockConsole from "jest-mock-console";
@@ -66,7 +66,11 @@ describe("MenuItemReviewIndexPage tests", () => {
     });
 
     test("does not render Create Button for non-admin user", async () => {
+        // arrange
         setupUserOnly();
+        axiosMock.onGet("/api/menuitemreview/all").reply(200, []);
+
+        // act
         render(
             <QueryClientProvider client={queryClient}>
                 <MemoryRouter>
@@ -75,7 +79,10 @@ describe("MenuItemReviewIndexPage tests", () => {
             </QueryClientProvider>
         );
 
-        await waitFor(() => { expect(screen.queryByText(/Create Menu Item Review/)).not.toBeInTheDocument(); });
+        // assert
+        await waitFor(() => {
+            expect(screen.queryByText(/Create Menu Item Review/)).not.toBeInTheDocument();
+        });
     });
 
     test("renders three menu item reviews", async () => {
