@@ -162,7 +162,7 @@ function App() {
         {
           hasRole(currentUser, "ROLE_USER") && (
             <>
-              <Route exact path="/ucsborganization" element={<UCSBDiningCommonsMenuItemIndexPage />} />
+              <Route exact path="/ucsborganization" element={<UCSBOrganizationIndexPage />} />
             </>
           )
         }
