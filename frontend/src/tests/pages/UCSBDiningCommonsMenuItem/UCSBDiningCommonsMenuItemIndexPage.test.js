@@ -148,6 +148,7 @@ describe("UCSBDiningCommonsMenuItemIndexPage tests", () => {
 
         // assert
         // UCSBDiningCommonsMenuItem 123 deleted
+        // ^ example text
         await waitFor(() => { expect(mockToast).toBeCalledWith("UCSBDiningCommonsMenuItem 1 deleted") });
 
     });
