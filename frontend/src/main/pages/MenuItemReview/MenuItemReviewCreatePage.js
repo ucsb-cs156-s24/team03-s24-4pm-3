@@ -8,7 +8,7 @@ export default function MenuItemReviewCreatePage({storybook=false}) {
 
     const objectToAxiosParams = (menuItemReview) => ({
         url: "/api/menuitemreview/post",
-        method: "post",
+        method: "POST",
         params: {
             itemId: menuItemReview.itemId,
             reviewerEmail: menuItemReview.reviewerEmail,
