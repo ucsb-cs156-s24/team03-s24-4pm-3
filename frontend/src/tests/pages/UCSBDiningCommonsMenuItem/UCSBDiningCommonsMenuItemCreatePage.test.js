@@ -95,7 +95,7 @@ describe("UCSBDiningCommonsMenuItemCreatePage tests", () => {
             "station": "Hispanic"
         });
 
-        // expect calls
+        // expect calls 
         expect(mockToast).toBeCalledWith("New UCSB Dining Commons Menu Item Created - id: 2 diningCommonsCode: Portola name: Burrito station: Hispanic");
         expect(mockNavigate).toBeCalledWith({ "to": "/ucsbdiningcommonsmenuitem" });
     });
