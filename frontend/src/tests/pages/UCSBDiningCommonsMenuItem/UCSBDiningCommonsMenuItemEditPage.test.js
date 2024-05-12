@@ -154,6 +154,7 @@ describe("UCSBDiningCommonsMenuItemEditPage tests", () => {
 
             fireEvent.click(submitButton);
 
+            // expect calls
             await waitFor(() => expect(mockToast).toBeCalled());
             expect(mockToast).toBeCalledWith("Menu Item Updated - id: 17 diningCommonsCode: ortega name: Burrito station: Japanese");
             expect(mockNavigate).toBeCalledWith({ "to": "/ucsbdiningcommonsmenuitem" });
