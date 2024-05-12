@@ -43,4 +43,3 @@ describe("UCSBOrganizationIndexPage tests", () => {
 
 });
 
-
