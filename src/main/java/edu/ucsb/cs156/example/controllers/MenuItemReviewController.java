@@ -95,6 +95,7 @@ public class MenuItemReviewController extends ApiController{
         review.setComment(incoming.getComment());
 
         menuItemReviewRepository.save(review);
+
         return review;
     }
 }
