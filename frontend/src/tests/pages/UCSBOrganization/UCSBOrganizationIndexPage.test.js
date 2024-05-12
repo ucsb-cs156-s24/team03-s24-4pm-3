@@ -42,4 +42,3 @@ describe("UCSBOrganizationIndexPage tests", () => {
     });
 
 });
-
