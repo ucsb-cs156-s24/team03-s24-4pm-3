@@ -19,6 +19,10 @@ import PlaceholderIndexPage from "main/pages/Placeholder/PlaceholderIndexPage";
 import PlaceholderCreatePage from "main/pages/Placeholder/PlaceholderCreatePage";
 import PlaceholderEditPage from "main/pages/Placeholder/PlaceholderEditPage";
 
+import UCSBDiningCommonsMenuItemIndexPage from "main/pages/UCSBDiningCommonsMenuItem/UCSBDiningCommonsMenuItemIndexPage";
+import UCSBDiningCommonsMenuItemCreatePage from "main/pages/UCSBDiningCommonsMenuItem/UCSBDiningCommonsMenuItemCreatePage";
+import UCSBDiningCommonsMenuItemEditPage from "main/pages/UCSBDiningCommonsMenuItem/UCSBDiningCommonsMenuItemEditPage";
+
 import UCSBOrganizationIndexPage from "main/pages/UCSBOrganization/UCSBOrganizationIndexPage";
 import UCSBOrganizationCreatePage from "main/pages/UCSBOrganization/UCSBOrganizationCreatePage";
 import UCSBOrganizationEditPage from "main/pages/UCSBOrganization/UCSBOrganizationEditPage";
@@ -27,10 +31,16 @@ import RecommendationRequestIndexPage from "main/pages/RecommendationRequest/Rec
 import RecommendationRequestCreatePage from "main/pages/RecommendationRequest/RecommendationRequestCreatePage";
 import RecommendationRequestEditPage from "main/pages/RecommendationRequest/RecommendationRequestEditPage";
 
+import ArticlesIndexPage from "main/pages/Articles/ArticlesIndexPage";
+import ArticlesCreatePage from "main/pages/Articles/ArticlesCreatePage";
+import ArticlesEditPage from "main/pages/Articles/ArticlesEditPage";
 
 import { hasRole, useCurrentUser } from "main/utils/currentUser";
 
 import "bootstrap/dist/css/bootstrap.css";
+import MenuItemReviewIndexPage from "./main/pages/MenuItemReview/MenuItemReviewIndexPage";
+import MenuItemReviewEditPage from "./main/pages/MenuItemReview/MenuItemReviewEditPage";
+import MenuItemReviewCreatePage from "./main/pages/MenuItemReview/MenuItemReviewCreatePage";
 
 function App() {
   const { data: currentUser } = useCurrentUser();
@@ -88,6 +98,21 @@ function App() {
             </>
           )
         }
+          {
+              hasRole(currentUser, "ROLE_USER") && (
+                  <>
+                      <Route exact path="/menuitemreview" element={<MenuItemReviewIndexPage />} />
+                  </>
+              )
+          }
+          {
+              hasRole(currentUser, "ROLE_ADMIN") && (
+                  <>
+                      <Route exact path="/menuitemreview/edit/:id" element={<MenuItemReviewEditPage />} />
+                      <Route exact path="/menuitemreview/create" element={<MenuItemReviewCreatePage />} />
+                  </>
+              )
+          }
         {
           hasRole(currentUser, "ROLE_USER") && (
             <>
@@ -122,6 +147,21 @@ function App() {
         {
           hasRole(currentUser, "ROLE_USER") && (
             <>
+              <Route exact path="/ucsbdiningcommonsmenuitem" element={<UCSBDiningCommonsMenuItemIndexPage />} />
+            </>
+          )
+        }
+        {
+          hasRole(currentUser, "ROLE_ADMIN") && (
+            <>
+              <Route exact path="/ucsbdiningcommonsmenuitem/edit/:id" element={<UCSBDiningCommonsMenuItemEditPage />} />
+              <Route exact path="/ucsbdiningcommonsmenuitem/create" element={<UCSBDiningCommonsMenuItemCreatePage />} />
+            </>
+          )
+        }
+        {
+          hasRole(currentUser, "ROLE_USER") && (
+            <>
               <Route exact path="/ucsborganization" element={<UCSBOrganizationIndexPage />} />
             </>
           )
@@ -131,6 +171,21 @@ function App() {
             <>
               <Route exact path="/ucsborganization/edit/:id" element={<UCSBOrganizationEditPage />} />
               <Route exact path="/ucsborganization/create" element={<UCSBOrganizationCreatePage />} />
+            </>
+          )
+        }
+        {
+          hasRole(currentUser, "ROLE_USER") && (
+            <>
+              <Route exact path="/articles" element={<ArticlesIndexPage />} />
+            </>
+          )
+        }
+        {
+          hasRole(currentUser, "ROLE_ADMIN") && (
+            <>
+              <Route exact path="/articles/edit/:id" element={<ArticlesEditPage />} />
+              <Route exact path="/articles/create" element={<ArticlesCreatePage />} />
             </>
           )
         }
