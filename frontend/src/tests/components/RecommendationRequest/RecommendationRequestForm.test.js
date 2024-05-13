@@ -67,6 +67,7 @@ describe("RecommendationRequestForm tests", () => {
 
         await screen.findByText(/DateRequested is required./);
         await screen.findByText(/DateNeeded is required./);
+        await screen.findByText(/Done is required./);
     });
 
 
