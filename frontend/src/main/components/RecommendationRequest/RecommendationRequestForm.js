@@ -21,7 +21,7 @@ function RecommendationRequestForm({ initialContents, submitAction, buttonLabel 
 
     // Stryker disable next-line Regex
     const isodate_regex = /(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d)/i;
-    const bool_regex = /(true|false)/;
+    // const bool_regex = /(true|false)/;
     // const emailRegex = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{3}/;
     
     return (
@@ -130,22 +130,15 @@ function RecommendationRequestForm({ initialContents, submitAction, buttonLabel 
                 </Col>
                 <Col>
                     <Form.Group className="mb-3" >
-                        <Form.Label htmlFor="done">Done</Form.Label>
-                        <Form.Control
+                        <Form.Check
+                            type="switch"
                             data-testid="RecommendationRequestForm-done"
                             id="done"
-                            type="boolean"
-                            isInvalid={Boolean(errors.done)}
-                            {...register("done", {
-                                required: true,
-                                pattern: bool_regex
-                            })}
-                        >
-                            
-                        </Form.Control>
-                        
+                            label=":Done"
+                            {...register("done", {})}
+                        />
                         <Form.Control.Feedback type="invalid">
-                            {errors.done && 'Done is required. '}
+                            {errors.done?.message}
                         </Form.Control.Feedback>
                     </Form.Group>
                 </Col>

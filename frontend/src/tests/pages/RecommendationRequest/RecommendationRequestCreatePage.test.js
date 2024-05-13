@@ -62,7 +62,7 @@ describe("RecommendationRequest tests", () => {
             explanation: "Explanation",
             dateRequested: "2023-02-02T00:00",
             dateNeeded: "2024-03-02T00:00",
-            done: "false"
+            done: false
         };
 
         axiosMock.onPost("/api/recommendationrequests/post").reply(202, request);
@@ -92,7 +92,7 @@ describe("RecommendationRequest tests", () => {
         fireEvent.change(explanationField, { target: { value: 'Explanation' } });
         fireEvent.change(dateRequestedField, { target: { value: '2023-02-02T00:00' } });
         fireEvent.change(dateNeededField, { target: { value: '2024-03-02T00:00' } });
-        fireEvent.change(doneField, { target: { value: 'false' } });
+        fireEvent.change(doneField, { target: { value: false } });
         fireEvent.click(submitButton);
 
         await waitFor(() => expect(axiosMock.history.post.length).toBe(1));
@@ -104,7 +104,7 @@ describe("RecommendationRequest tests", () => {
             "explanation": "Explanation",
             "dateRequested": "2023-02-02T00:00",
             "dateNeeded": "2024-03-02T00:00",
-            "done": "false"
+            "done": false
         });
 
         // assert - check that the toast was called with the expected message
