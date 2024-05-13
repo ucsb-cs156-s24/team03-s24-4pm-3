@@ -6,7 +6,7 @@ const recommendationRequestFixtures = {
         "explanation": "BS/MS Program",
         "dateRequested": "2024-05-09T21:48:00",
         "dateNeeded": "2024-05-09T21:48:00",
-        "done": "true"
+        "done": true
     },
 threeRecommendationRequests: [
     {
@@ -16,7 +16,7 @@ threeRecommendationRequests: [
         "explanation": "Program A",
         "dateRequested": "2024-05-09T21:48:00",
         "dateNeeded": "2024-05-10T21:48:00",
-        "done": "false"
+        "done": false
     },
     {
         "id": 3,
@@ -25,7 +25,7 @@ threeRecommendationRequests: [
         "explanation": "Program B",
         "dateRequested": "2024-05-09T21:48:00",
         "dateNeeded": "2024-05-11T21:48:00",
-        "done": "true"
+        "done": true
     },
     {
         "id": 4,
@@ -34,7 +34,7 @@ threeRecommendationRequests: [
         "explanation": "Program C",
         "dateRequested": "2024-05-09T21:48:00",
         "dateNeeded": "2024-05-12T21:48:00",
-        "done": "false"
+        "done": false
     }
 ]
 };
