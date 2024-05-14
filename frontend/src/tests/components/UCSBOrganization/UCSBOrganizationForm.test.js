@@ -86,6 +86,34 @@ describe("UCSBOrganizationForm tests", () => {
         await waitFor(() => expect(mockedNavigate).toHaveBeenCalledWith(-1));
     });
 
+    test("validates 'inactive' field correctly", async () => {
+        render(
+            <QueryClientProvider client={queryClient}>
+                <Router>
+                    <UCSBOrganizationForm />
+                </Router>
+            </QueryClientProvider>
+        );
+    
+        expect(await screen.findByText(/Create/)).toBeInTheDocument();
+        const submitButton = screen.getByText(/Create/);
+    
+        fireEvent.click(submitButton);
+
+        await screen.findByText(/inactive is required/);
+    
+
+        const inactiveInput = screen.getByTestId(`${testId}-inactive`);
+        fireEvent.change(inactiveInput, { target: { value: "invalid" } });
+    
+
+        fireEvent.click(submitButton);
+    
+  
+        await screen.findByText(/Inactive must be 'true' or 'false'./);
+    });
+    
+
     test("that the correct validations are performed", async () => {
         render(
             <QueryClientProvider client={queryClient}>
