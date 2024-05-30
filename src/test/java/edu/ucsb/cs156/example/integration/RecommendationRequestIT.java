@@ -27,6 +27,7 @@ import java.time.LocalDateTime;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 
 import edu.ucsb.cs156.example.entities.RecommendationRequest;
+import edu.ucsb.cs156.example.entities.Restaurant;
 import edu.ucsb.cs156.example.repositories.RecommendationRequestRepository;
 import edu.ucsb.cs156.example.repositories.UserRepository;
 import edu.ucsb.cs156.example.services.CurrentUserService;
@@ -59,10 +60,9 @@ public class RecommendationRequestIT {
         @MockBean
         UserRepository userRepository;
 
-        @WithMockUser(roles = { "USER" })
+        @WithMockUser(roles = { "ADMIN", "USER" })
         @Test
-        // Checks if a logged in user can get a recommendation request by id
-        public void test_that_logged_in_user_can_get_by_id_when_the_id_exists() throws Exception {
+        public void an_admin_user_can_post_a_new_recommendation_request() throws Exception {
                 // arrange
 
             LocalDateTime ldt1 = LocalDateTime.parse("2022-01-03T00:00:00");
@@ -75,17 +75,17 @@ public class RecommendationRequestIT {
                             .dateRequested(ldt1)
                             .dateNeeded(ldt2)
                             .done(false)
+                            .id(1)
                             .build();
-            
-            recreqRepository.save(rr1);
-
                 // act
-            MvcResult response = mockMvc.perform(get("/api/recommendationrequests?id=1"))
-                            .andExpect(status().isOk()).andReturn();
+                MvcResult response = mockMvc.perform(
+                                post("/api/recommendationrequests/post?requesterEmail=a@gmail.com&professorEmail=p@gmail.com&explanation=I need letter&dateRequested=2022-01-03T00:00:00&dateNeeded=2022-02-03T00:00:00&done=false")
+                                                .with(csrf()))
+                                .andExpect(status().isOk()).andReturn();
 
-            // assert
-            String expectedJson = mapper.writeValueAsString(rr1);
-            String responseString = response.getResponse().getContentAsString();
-            assertEquals(expectedJson, responseString);
+                // assert
+                String expectedJson = mapper.writeValueAsString(rr1);
+                String responseString = response.getResponse().getContentAsString();
+                assertEquals(expectedJson, responseString);
         }
 }
