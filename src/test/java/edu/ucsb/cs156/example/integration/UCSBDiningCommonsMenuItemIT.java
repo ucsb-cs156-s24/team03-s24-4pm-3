@@ -78,6 +78,7 @@ public class UCSBDiningCommonsMenuItemIT {
                 assertEquals(expectedJson, responseString);
         }
 
+
         @WithMockUser(roles = { "ADMIN", "USER" })
         @Test
         public void an_admin_user_can_post_a_new_diningcommonsmenuItem() throws Exception {
