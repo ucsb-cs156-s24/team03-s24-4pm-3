@@ -69,7 +69,7 @@ public class UCSBDiningCommonsMenuItemIT {
                 ucsbDiningCommonsMenuItemRepository.save(menuItem);
 
                 // act
-                MvcResult response = mockMvc.perform(get("/api/ucsbdiningcommonsmenuitems?id=1"))
+                MvcResult response = mockMvc.perform(get("/api/ucsbdiningcommonsmenuitem?id=1"))
                                 .andExpect(status().isOk()).andReturn();
 
                 // assert
